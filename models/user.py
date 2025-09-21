@@ -10,10 +10,16 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     creationDate = db.Column("creation_date", db.DateTime, default=datetime.now)
 
+    orders = db.relationship('Order', back_populates="user")
     def __init__(self, username, fullname, password):
         self.username = username
         self.fullname = fullname
         self.password = password
 
     def toDict(self):
-        return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
+        return {
+            "fullname": self.fullname,
+            "username": self.username,
+            "orders": [order.toDict() for order in self.orders]
+        }
+
