@@ -1,0 +1,15 @@
+    Modelos
+- User(owner)
+- Client(frontend) -> User
+- Token(accessToken, refreshToken...) -> User
+- AuthorizationCode -> User
+- AuthorizationCodeGrant   
+   Componentes
+- AuthorizationServer
+- Endpoint for authorization
+- Token endpoint
+- Error URIs
+- PasswordGrant
+
+Referencia:
+	https://docs.authlib.org/en/latest/flask/2/resource-server.html
